@@ -1,5 +1,6 @@
 # DocAI
-##ABSTRACT
+## ABSTRACT
+
 DocAI is an AI-powered document-based chatbot that allows users to upload documents and ask questions based on the content of those documents. The system supports uploading multiple documents at the same time and enables users to query information across all uploaded files.
 
 Once the documents are uploaded, the text content is extracted and split into smaller, meaningful chunks. Each chunk is converted into a vector embedding using a Sentence Transformer model, which captures the semantic meaning of the text. These embeddings are stored in a vector database for efficient similarity-based retrieval.
