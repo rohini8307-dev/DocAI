@@ -43,7 +43,7 @@ The retrieved document content is provided to a Large Language Model (LLM) to ge
     - Streamlit
     - Sentence Transformer from HuggingFace (MiniLM-L6-v2)
     - ChromaDB
-    - Mistral 
+    - Mistral-7B
     - Ollama
     - LangChain
 
