@@ -27,7 +27,7 @@ The retrieved document content is provided to a Large Language Model (LLM) to ge
     - FastAPI converts the question into an embedding and retrieves the most relevant chunks from ChromaDB using semantic search.
 
 5. LLM Response Generation
-    - Retrieved chunks are passed to Mistral-7B (or another LLM).
+    - Retrieved chunks are passed to Mistral-7B.
     - Retrieval-Augmented Generation (RAG) ensures that the answer is based strictly on the uploaded content, avoiding hallucinations.
 
 6. Answer Sent Back to User
