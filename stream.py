@@ -4,11 +4,10 @@ import json
 
 FASTAPI_URL = "http://127.0.0.1:8000"
 
-st.title("Doc.AI ⚡")
+st.title("Doc.AI ")
 st.caption("Fast RAG-powered document Q&A")
 
-# ---------------- File Upload Section ----------------
-st.header("📤 Upload a File")
+st.header("Upload a File")
 uploaded_file = st.file_uploader("Choose a file", type=["txt", "pdf", "docx", "doc"])
 
 if st.button("Upload File", type="primary"):
@@ -18,36 +17,33 @@ if st.button("Upload File", type="primary"):
             response = requests.post(f"{FASTAPI_URL}/upload/", files=files, timeout=120)
 
             if response.status_code == 200:
-                st.success("✅ File uploaded and processed successfully!")
+                st.success("File uploaded and processed successfully!")
             else:
                 try:
-                    st.error(f"❌ Error: {response.json().get('detail')}")
+                    st.error(f"Error: {response.json().get('detail')}")
                 except:
-                    st.error("❌ Error: Unable to parse response from server.")
+                    st.error("Error: Unable to parse response from server.")
     else:
-        st.warning("⚠️ Please upload a file before clicking upload.")
+        st.warning("Please upload a file before clicking upload.")
 
-# ---------------- Ask Question Section ----------------
-st.header("💬 Ask a Question")
+st.header("Ask a Question")
 question = st.text_input("Enter your question", placeholder="What is this document about?")
 
 if st.button("Get Answer", type="primary"):
     if question:
-        with st.spinner("🔍 Searching through your documents..."):
-            # Call the FastAPI endpoint with timeout
+        with st.spinner("Searching through your documents..."):
             response = requests.post(f"{FASTAPI_URL}/ask/?question={question}", timeout=60)
         
         if response.status_code == 200:
-            # Get the answer from nested structure
             answer = response.json().get('answer', {}).get('result', 'No answer received')
             
-            # Display the answer
-            st.subheader("💡 Response")
+            st.subheader("Response")
             st.write(answer)
         else:
             try:
-                st.error(f"❌ Error: {response.json().get('detail')}")
+                st.error(f"Error: {response.json().get('detail')}")
             except:
-                st.error("❌ Error: Unable to parse response from server.")
+                st.error("Error: Unable to parse response from server.")
     else:
-        st.warning("⚠️ Please enter a question before clicking Get Answer.")
+        st.warning("Please enter a question before clicking Get Answer.")
+
